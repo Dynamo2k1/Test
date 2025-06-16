@@ -1,22 +1,15 @@
 pipeline {
     agent any
+
+    parameters {
+        string(name: 'GREETING', defaultValue: 'Hello, Jenkins!', description: 'Greeting message')
+    }
+
     stages {
-        stage('Build') {
+        stage('Example') {
             steps {
-                echo 'Building..'
-                // Here you can define commands for your build
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-                // Here you can define commands for your tests
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-                // Here you can define commands for your deployment
+                echo "This is a test pipeline."
+                echo "Parameter GREETING is: ${params.GREETING}"
             }
         }
     }
